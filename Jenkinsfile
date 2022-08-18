@@ -1,11 +1,17 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent { dockerfile true }
     stages {
         stage('Build') {
             steps {
-                sh 'echo build stage'
-                sh 'mvn --version'
+                sh 'echo build stage started '
+                sh 'docker build -t getting-started'
             }
+        }
+        stage('Run'){
+            steps {
+                sh 'echo run stage started'
+                sh 'docker run -dp 3000:3000 getting-started'
+            }    
         }
     }
 }
