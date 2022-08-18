@@ -1,17 +1,11 @@
-pipeline {
-    agent { dockerfile true }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'echo ======== build stage started ========'
-                //sh 'docker build -t getting-started'
-            }
-        }
-        stage('Run'){
-            steps {
-                sh 'echo ======== run stage started ========'
-                //sh 'docker run -dp 3000:3000 getting-started'
-            }    
-        }
+node {
+    checkout scm
+
+    docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
+
+        def customImage = docker.build("buyandelger/getting-started")
+
+        /* Push the container to the custom Registry */
+        customImage.push()
     }
 }
