@@ -10,7 +10,7 @@ pipeline {
         stage('Run'){
             steps {
                 sh 'echo run stage started'
-                sh 'docker run -dp 3000:3000 getting-started'
+                //sh 'docker run -dp 3000:3000 getting-started'
             }    
         }
     }
