@@ -4,8 +4,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo ======== build stage started ========'
-                sh 'docker build -t getting-started'
-                sh 'echo ======== build stage ended ========='
+                //sh 'docker build -t getting-started'
+                //sh 'echo ======== build stage ended ========='
             }
         }
         stage('Run'){
