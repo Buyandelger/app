@@ -3,7 +3,7 @@ pipeline{
         dockerfile{
             registryUrl 'https://registry.hub.docker.com'
             registryCredentialsId 'dockerHub'
-            additionalBuildArgs "--build arg buyandelger/getting-started.${env.BUILD_ID}"
+            additionalBuildArgs "--build-arg buyandelger/getting-started.${env.BUILD_ID}"
         }
     }
     stages{
