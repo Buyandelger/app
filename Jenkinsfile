@@ -1,10 +1,10 @@
-pipeline{
+/*pipeline{
     agent { dockerfile true }
     stages{
         stage('Build stage'){
             steps{
                 sh 'echo build starting ....'
-                script {
+                script {*/
                     node {
                         checkout scm
 
@@ -15,7 +15,7 @@ pipeline{
                             /* Push the container to the custom Registry */
                             customImage.push()
                         }
-                    }
+                    }/*
                 }
             }
         }
@@ -26,4 +26,4 @@ pipeline{
             }
         }
     }
-}
+}*/
