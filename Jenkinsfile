@@ -1,15 +1,16 @@
 pipeline{
-    agent { dockerfile true }
+    agent { 
+        dockerfile{
+            filename 'Dockerfile' 
+            label "buyandelger/getting-started.${env.BUILD_ID}"
+            registryUrl 'https://registry.hub.docker.com'
+            registryCredentialsId 'dockerHub'
+        }
+    }
     stages{
         stage('Build stage'){
             steps{
-                sh 'echo build starting ....'
-                script {
-                        docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
-                            def customImage = docker.build("buyandelger/getting-started.${env.BUILD_ID}")
-                            customImage.push()
-                        }
-                }
+                sh 'echo build starting ....'        
             }
         }
         stage('Deploy to test server ....'){
