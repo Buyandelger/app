@@ -4,6 +4,7 @@ pipeline{
             filename 'Dockerfile' 
             registryUrl 'https://registry.hub.docker.com'
             registryCredentialsId 'dockerHub'
+            additionalBuildArgs "buyandelger/getting-started.${env.BUILD_ID}"
         }
     }
     stages{
