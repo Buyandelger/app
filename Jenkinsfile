@@ -2,7 +2,6 @@ pipeline{
     agent { 
         dockerfile{
             filename 'Dockerfile' 
-            label "buyandelger/getting-started.${env.BUILD_ID}"
             registryUrl 'https://registry.hub.docker.com'
             registryCredentialsId 'dockerHub'
         }
