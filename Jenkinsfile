@@ -1,9 +1,9 @@
 pipeline{
     agent { 
         dockerfile{
+            args "-t buyandelger/getting-started.${env.BUILD_ID}"
             registryUrl 'https://registry.hub.docker.com'
             registryCredentialsId 'dockerHub'
-            args "-t buyandelger/getting-started.${env.BUILD_ID}"
         }
     }
     stages{
