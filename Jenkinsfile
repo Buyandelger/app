@@ -26,10 +26,10 @@ pipeline{
                         remote.password = '123456'
                         remote.allowAnyHosts = true
                         //sshCommand remote: remote, command: "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}"
-                        sshCommand remote: remote, command: "docker version"
-                        sh 'DONE !'
+                        sshCommand remote: remote, command: "docker version"                        
                     }
                 }
+                sh 'DONE !'
                 //sh "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}"
             }
         }
