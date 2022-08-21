@@ -17,8 +17,17 @@ pipeline{
         }
         stage('Deploy to test server ....'){
             steps{
-                //sh 'ssh admin@192.168.210.131'
-                sh "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}"
+                script{
+                    node{
+                        checkout scm
+                        docker.withServer('ssh://192.168.210.131','centoscred'){
+                            docker.image("buyandelger/getting-started.${env.BUILD_ID}").withRun('-d -p 3000:3000'){
+                                sh 'ready to use'
+                            }                                 
+                        }
+                    }
+                }
+                //sh "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}"
             }
         }
     }
