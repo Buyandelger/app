@@ -29,7 +29,7 @@ pipeline{
                         sshCommand remote: remote, command: "docker version"                        
                     }
                 }
-                sh 'DONE !'
+                //sh 'DONE !'
                 //sh "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}"
             }
         }
