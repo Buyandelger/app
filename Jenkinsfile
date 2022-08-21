@@ -1,9 +1,9 @@
 pipeline{
     agent any
     stages{
-        stage('Build stage'){
-            sh 'echo build starting ....'        
+        stage('Build stage'){            
             steps{
+                sh 'echo build starting ....'        
                 agent { 
                     dockerfile{
                         image "buyandelger/getting-started.${env.BUILD_ID}"
