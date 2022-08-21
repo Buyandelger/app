@@ -19,12 +19,14 @@ pipeline{
             steps{
                 script{
                     node{
-                        checkout scm
-                        docker.withServer('ssh://192.168.210.131','centoscred'){
-                            docker.image("buyandelger/getting-started.${env.BUILD_ID}").withRun('-d -p 3000:3000'){
-                                sh 'ready to use'
-                            }                                 
-                        }
+                        def remote = [:]
+                        remote.name = 'test'
+                        remote.host = '192.168.210.131'
+                        remote.user = 'admin'
+                        remote.password = '123456'
+                        remote.allowAnyHosts = true
+                        sshCommand remote: remote, command: "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}"
+                        sh 'DONE !'
                     }
                 }
                 //sh "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}"
