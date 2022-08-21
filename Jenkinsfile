@@ -1,15 +1,16 @@
 pipeline{
-    agent { 
-        dockerfile{
-            args "-t buyandelger/getting-started.${env.BUILD_ID}"
-            registryUrl 'https://registry.hub.docker.com'
-            registryCredentialsId 'dockerHub'
-        }
-    }
+    agent any
     stages{
         stage('Build stage'){
+            sh 'echo build starting ....'        
             steps{
-                sh 'echo build starting ....'        
+                agent { 
+                    dockerfile{
+                        image "buyandelger/getting-started.${env.BUILD_ID}"
+                        registryUrl 'https://registry.hub.docker.com'
+                        registryCredentialsId 'dockerHub'
+                    }                
+                }                        
             }
         }
         stage('Deploy to test server ....'){
