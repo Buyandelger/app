@@ -4,13 +4,15 @@ pipeline{
         stage('Build stage'){            
             steps{
                 sh 'echo build starting ....'        
-                node {
-                    checkout scm
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
-                        def customImage = docker.build("buyandelger/getting-started.${env.BUILD_ID}")
-                        customImage.push()
+                script{
+                    node{
+                        checkout scm
+                        docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
+                            def customImage = docker.build("buyandelger/getting-started.${env.BUILD_ID}")
+                            customImage.push()
+                        }
                     }
-               }                          
+                }                          
             }
         }
         stage('Deploy to test server ....'){
