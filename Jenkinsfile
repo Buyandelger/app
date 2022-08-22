@@ -1,3 +1,3 @@
 MyCustom(
-    regUrl = 'https://registry.hub.docker.com'
+    regUrl: "https://registry.hub.docker.com"
 )
