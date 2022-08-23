@@ -24,7 +24,7 @@ def call (Map pipelineParams){
                         node{
                             def remote = [:]
                             remote.name = 'test'
-                            remote.host = '192.168.210.135'
+                            remote.host = '192.168.210.136'
                             remote.user = 'admin'
                             remote.password = '123456'
                             remote.allowAnyHosts = true
