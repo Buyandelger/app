@@ -34,6 +34,7 @@ def call (Map pipelineParams){
                             sshCommand remote: remote, command: "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}"                    
                         }
                     }*/
+                    sh 'cat /etc/centos-release'
                     sh "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}" 
                 }
             }
