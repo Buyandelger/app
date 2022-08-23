@@ -19,8 +19,11 @@ def call (Map pipelineParams){
                 }
             }
             stage('Deploy to test server ....'){
+                agent {
+                    label 'MyCentOSLinux'
+                }
                 steps{
-                    script{
+                    /*script{
                         node{
                             def remote = [:]
                             remote.name = 'test'
@@ -30,7 +33,8 @@ def call (Map pipelineParams){
                             remote.allowAnyHosts = true
                             sshCommand remote: remote, command: "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}"                    
                         }
-                    }
+                    }*/
+                    sh "docker run -d -p 3000:3000 buyandelger/getting-started.${env.BUILD_ID}" 
                 }
             }
         }
